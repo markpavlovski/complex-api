@@ -8,6 +8,8 @@ router.get('/:id', ctrl.show)
 router.post('/:id', ctrl.modify)
 router.delete('/:id', ctrl.remove)
 
+// router.get('/:id/authors/', ctrl.show)
+
 
 
 module.exports = router

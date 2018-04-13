@@ -1,4 +1,4 @@
-const uuid = require('uuid/v4')
+const shortid = require('shortid')
 const books = []
 
 
@@ -8,7 +8,7 @@ class Book {
     this.name = name
     this.desription = description
     this.authors = authors.split(", ")
-    this.id = uuid()
+    this.id = shortid()
     this.borrowed = false
   }
 }

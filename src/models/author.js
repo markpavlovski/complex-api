@@ -1,18 +1,34 @@
-const uuid = require('uuid/v4')
+const shortid = require('shortid')
 const authors = []
+const fs = require('fs')
+const path=require('path')
+const file = path.join(__dirname, 'db.json')
 
+class DB {
+  constructor(filePath, ...args){
+    
+  }
+}
 
 
 class Author {
   constructor({firstName,lastName,authors}){
     this.firstName = firstName
     this.lastName = lastName
-    this.id = uuid()
+    this.id = shortid()
   }
 }
 
-let getAll = () => authors
-let show = (id) => authors.find(el => el.id === id)
+let getAll = () => {
+  const db = JSON.parse(fs.readFileSync(file, 'utf-8'))
+  authors = db.authors
+  return authors
+}
+let show = (id) => {
+  const db = JSON.parse(fs.readFileSync(file, 'utf-8'))
+  authors = db.authors
+  authors.find(el => el.id === id)
+}
 
 let create = ({firstName = "", lastName = ""}) => {
 
@@ -21,6 +37,9 @@ let create = ({firstName = "", lastName = ""}) => {
 
   if (!firstName) {
     errors.push('firstName is required')
+    response = { errors }
+  } else if (!lastName){
+    errors.push('lastName is required')
     response = { errors }
   } else {
     console.log("hooooo");
