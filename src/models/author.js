@@ -16,11 +16,12 @@ class Author {
   }
 }
 
+let getAll = () => db.get('authors')
+
 
 let show = (id) => {
-  const db = JSON.parse(fs.readFileSync(file, 'utf-8'))
   authors = db.get('authors')
-  authors.find(el => el.id === id)
+  return authors.find(el => el.id === id)
 }
 
 let create = ({firstName = "", lastName = ""}) => {
@@ -73,4 +74,4 @@ let remove = (id) => {
   return removed
 }
 
-module.exports = { create, show, modify, remove }
+module.exports = { getAll, create, show, modify, remove }
