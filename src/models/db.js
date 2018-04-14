@@ -1,36 +1,35 @@
 const fs = require('fs')
-const path = require('path')
-const file = path.join(__dirname, 'db.json')
 
 class DB {
   constructor(file, ...args){
-    this.path = file
-    // args.forEach(resource => this[resource] = [])
+    this.file = file
+    args.forEach(resource => {
+      if (!this.getAll().hasOwnProperty(resource)) this.set(resource, null)
+    })
   }
 
   getAll(){
-    return JSON.parse(fs.readFileSync(file, 'utf-8'))
+    return JSON.parse(fs.readFileSync(this.file, 'utf-8'))
   }
 
-  getOne(resource){
-    return JSON.parse(fs.readFileSync(file, 'utf-8'))[resource]
+  get(resource){
+    return JSON.parse(fs.readFileSync(this.file, 'utf-8'))[resource]
   }
-  set(resource,dataArray){
+
+  set(resource,data){
     const db = this.getAll(resource)
-    db[resource] = dataArray
-    fs.writeFileSync(file,JSON.stringify(db))
+    db[resource] = data
+    fs.writeFileSync(this.file,JSON.stringify(db))
     return this.getAll(resource)
   }
+
+  remove(resource){
+    const db = this.getAll(resource)
+    delete db[resource]
+    fs.writeFileSync(this.file,JSON.stringify(db))
+    return `Resource ${resource} has been removed.`
+  }
+
 }
 
-let x = new DB(file,'resource1','resource2')
-console.log('object: ', x);
-console.log('getAll: ',x.getAll());
-console.log('getOne: ',x.getOne("dogs"));
-console.log('Set: ',x.set("dogs",['hi','hello','whats up']));
-console.log('Set: ',x.set("dogs",['hi','hello','whats up']));
-console.log('Set: ',x.set("cats",['hi','hello','whats up']));
-console.log('Set: ',x.set("colors",['hi','hello','whats up']));
-console.log('Set: ',x.set("authors",['hi','hello','whats up']));
-console.log('getAll: ',x.getAll());
-console.log('object: ',x)
+module.exports = DB
