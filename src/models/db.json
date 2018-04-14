@@ -1,1 +1,11 @@
-{"cats":null,"dogs":null,"authors":null}
+{
+  "authors": [{
+    "firstName": "Hi",
+    "lastName": "Ho",
+    "id": "rkvKV913M"
+  }, {
+    "firstName": "Mark",
+    "lastName": "Pavlovski",
+    "id": "r1D4Hcy2f"
+  }]
+}

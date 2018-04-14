@@ -37,13 +37,15 @@ let create = ({firstName = "", lastName = ""}) => {
     response = { errors }
   } else {
     console.log("hooooo");
+    const authors = db.get('authors')
+
     const author = new Author({firstName, lastName})
     console.log(authors,author);
-
-    const authors = db.get('authors')
     authors.push(author)
     db.set('authors', authors)
+    response = author
   }
+
   return response
 }
 

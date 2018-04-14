@@ -4,7 +4,7 @@ class DB {
   constructor(file, ...args){
     this.file = file
     args.forEach(resource => {
-      if (!this.getAll().hasOwnProperty(resource)) this.set(resource, null)
+      if (!this.getAll().hasOwnProperty(resource)) this.set(resource, [])
     })
   }
 
