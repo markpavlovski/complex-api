@@ -7,5 +7,22 @@
     "firstName": "Mark",
     "lastName": "Pavlovski",
     "id": "r1D4Hcy2f"
+  }, {
+    "firstName": "Mark",
+    "lastName": "Pavlovski",
+    "id": "SJZTIqy3G"
+  }],
+  "books": [{
+    "name": "GoodBook",
+    "desription": "veryGoodBook",
+    "authors": ["Me", "Also Me"],
+    "id": "rJ-lY9Jhf",
+    "borrowed": false
+  }, {
+    "name": "GoodBook",
+    "desription": "veryGoodBook",
+    "authors": ["Me", "Also Me"],
+    "id": "ByVMF9k2M",
+    "borrowed": false
   }]
 }

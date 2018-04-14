@@ -1,5 +1,4 @@
 const shortid = require('shortid')
-// const authors = []
 const fs = require('fs')
 const path=require('path')
 const file = path.join(__dirname, 'db.json')
@@ -17,12 +16,8 @@ class Author {
 }
 
 let getAll = () => db.get('authors')
+let show = (id) => db.get('authors').find(el => el.id === id)
 
-
-let show = (id) => {
-  authors = db.get('authors')
-  return authors.find(el => el.id === id)
-}
 
 let create = ({firstName = "", lastName = ""}) => {
 
@@ -36,11 +31,8 @@ let create = ({firstName = "", lastName = ""}) => {
     errors.push('lastName is required')
     response = { errors }
   } else {
-    console.log("hooooo");
     const authors = db.get('authors')
-
     const author = new Author({firstName, lastName})
-    console.log(authors,author);
     authors.push(author)
     db.set('authors', authors)
     response = author
