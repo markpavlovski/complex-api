@@ -15,13 +15,21 @@
   "books": [{
     "name": "GoodBook",
     "desription": "veryGoodBook",
-    "authors": [],
+    "authors": [{
+      "firstName": "Tengo",
+      "lastName": "Dog",
+      "id": "SJZTIqy3G"
+    }],
     "id": "rJ-lY9Jhf",
     "borrowed": false
   }, {
     "name": "Other Book",
     "desription": "veryGoodBook",
-    "authors": [],
+    "authors": [{
+      "firstName": "Dan",
+      "lastName": "Dog",
+      "id": "rkvKV913M"
+    }],
     "id": "ByVMF9k2M",
     "borrowed": false
   }]

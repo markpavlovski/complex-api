@@ -72,16 +72,23 @@ let addAuthor = (id, authorIds) => {
 
   const books = db.get('books')
   const authors = db.get('authors')
+  let error
 
   const book = books.find(el => el.id === id)
   authorIds.split(', ').map(
     id => {
+      if (book.authors.find(author => author.id === id)) {
+        console.log('hi');
+        error = {error: 'duplicate author detected'}
+        return error
+      }
       const author = authors.find(author => author.id === id)
       if (author) book.authors.push(author)
     }
   )
+  db.set('books', books)
   console.log(book)
-  return {book}
+  return error ? error: {book}
 }
 
 
