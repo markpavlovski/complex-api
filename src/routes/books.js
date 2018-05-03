@@ -7,6 +7,8 @@ router.post('/', ctrl.create)
 router.get('/:id', ctrl.show)
 router.post('/:id', ctrl.modify)
 router.delete('/:id', ctrl.remove)
+router.post('/:id/authors', ctrl.addAuthor)
+
 
 
 module.exports = router

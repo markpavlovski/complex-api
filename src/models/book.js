@@ -68,6 +68,22 @@ let remove = (id) => {
 
 }
 
+let addAuthor = (id, authorIds) => {
+
+  const books = db.get('books')
+  const authors = db.get('authors')
+
+  const book = books.find(el => el.id === id)
+  authorIds.split(', ').map(
+    id => {
+      const author = authors.find(author => author.id === id)
+      if (author) book.authors.push(author)
+    }
+  )
+  console.log(book)
+  return {book}
+}
 
 
-module.exports = { getAll, create, show, modify, remove }
+
+module.exports = { getAll, create, show, modify, remove, addAuthor }

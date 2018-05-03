@@ -1,27 +1,27 @@
 {
   "authors": [{
-    "firstName": "Hi",
-    "lastName": "Ho",
+    "firstName": "Dan",
+    "lastName": "Dog",
     "id": "rkvKV913M"
   }, {
     "firstName": "Mark",
     "lastName": "Pavlovski",
     "id": "r1D4Hcy2f"
   }, {
-    "firstName": "Mark",
-    "lastName": "Pavlovski",
+    "firstName": "Tengo",
+    "lastName": "Dog",
     "id": "SJZTIqy3G"
   }],
   "books": [{
     "name": "GoodBook",
     "desription": "veryGoodBook",
-    "authors": ["Me", "Also Me"],
+    "authors": [],
     "id": "rJ-lY9Jhf",
     "borrowed": false
   }, {
-    "name": "GoodBook",
+    "name": "Other Book",
     "desription": "veryGoodBook",
-    "authors": ["Me", "Also Me"],
+    "authors": [],
     "id": "ByVMF9k2M",
     "borrowed": false
   }]

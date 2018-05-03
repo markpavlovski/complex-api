@@ -36,6 +36,16 @@ function remove (req, res, next) {
   res.status(200).json({ data })
 }
 
+function addAuthor (req, res, next) {
+  const result = model.addAuthor(req.params.id, req.body.authorIds)
+  if (!req.body.authorIds) {
+    return next({ status: 400, message: `Please populate authorIds with comma-space separated ids`, errors: result.errors })
+  }
+  if (result.errors) {
+    return next({ status: 400, message: `Could not add new authors`, errors: result.errors })
+  }
 
+  res.status(201).json({ data: result })
+}
 
-module.exports = { getAll, create, show, modify, remove }
+module.exports = { getAll, create, show, modify, remove, addAuthor }
