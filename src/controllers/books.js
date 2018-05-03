@@ -48,4 +48,16 @@ function addAuthor (req, res, next) {
   res.status(201).json({ data: result })
 }
 
-module.exports = { getAll, create, show, modify, remove, addAuthor }
+function removeAuthor (req, res, next) {
+  const result = model.removeAuthor(req.params.id, req.body.authorId)
+  if (!req.body.authorId) {
+    return next({ status: 400, message: `Please populate authorId`, errors: result.errors })
+  }
+  if (result.errors) {
+    return next({ status: 400, message: `Could not remove author`, errors: result.errors })
+  }
+
+  res.status(201).json({ data: result })
+}
+
+module.exports = { getAll, create, show, modify, remove, addAuthor, removeAuthor}

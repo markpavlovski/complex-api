@@ -8,6 +8,7 @@ router.get('/:id', ctrl.show)
 router.post('/:id', ctrl.modify)
 router.delete('/:id', ctrl.remove)
 router.post('/:id/authors', ctrl.addAuthor)
+router.delete('/:id/authors', ctrl.removeAuthor)
 
 
 

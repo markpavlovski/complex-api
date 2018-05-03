@@ -78,7 +78,6 @@ let addAuthor = (id, authorIds) => {
   authorIds.split(', ').map(
     id => {
       if (book.authors.find(author => author.id === id)) {
-        console.log('hi');
         error = {error: 'duplicate author detected'}
         return error
       }
@@ -87,10 +86,25 @@ let addAuthor = (id, authorIds) => {
     }
   )
   db.set('books', books)
-  console.log(book)
   return error ? error: {book}
 }
 
 
+let removeAuthor = (id, authorId) => {
 
-module.exports = { getAll, create, show, modify, remove, addAuthor }
+  const books = db.get('books')
+  const authors = db.get('authors')
+  let error
+
+  const book = books.find(el => el.id === id)
+  console.log(book.authors.map(author => author.id),authorId);
+  const idx = book.authors.map(author => author.id).indexOf(authorId)
+  if (idx == -1) return {errors: 'no such author'}
+  const deleted = book.authors.splice(idx,1)
+  db.set('books', books)
+  return {deleted}
+}
+
+
+
+module.exports = { getAll, create, show, modify, remove, addAuthor, removeAuthor}
